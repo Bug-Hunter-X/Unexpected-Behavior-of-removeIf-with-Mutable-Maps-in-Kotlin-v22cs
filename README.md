@@ -1,0 +1,5 @@
+# Unexpected Behavior of removeIf with Mutable Maps in Kotlin
+
+This repository demonstrates an uncommon Kotlin bug related to using `removeIf` with `MutableMap`s.  The `removeIf` function modifies the collection during iteration, which can lead to unexpected omissions when used improperly with maps. The standard behaviour of `removeIf` for `MutableList`s is expected and well-defined, while the behaviour with `MutableMap`s can be subtly different and potentially lead to errors.
+
+The `bug.kt` file shows the problematic code, illustrating how entries can be missed when applying `removeIf` to a map's entry set.  The `bugSolution.kt` file presents a solution using a safer alternative that avoids concurrent modification issues. This solution iterates over a copy of the keys and removes elements accordingly. The example highlights the importance of understanding how `removeIf` interacts with different collection types in Kotlin, especially when dealing with potentially concurrent modification.
